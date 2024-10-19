@@ -37,7 +37,7 @@ const Hero = () => {
                 </p>
               </div>
               <a
-                href="#visit"
+                href="#Products"
                 className="z-10 inline-block text-sm px-6 py-2 md:text-lg bg-app-3 hover:scale-[115%] text-white font-semibold rounded-full transition duration-300 ease-in-"
               >
                 Produtos

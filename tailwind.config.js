@@ -9,7 +9,7 @@ export default {
       },
       colors: {
         app: {
-          1: "#CBB08F",
+          1: "#EBECE0",
           2: "#B8CACA",
           3: "#754F30",
           4: "#4E3B31",
