@@ -13,4 +13,21 @@ body {
     /* Replace with your chosen font */
 }
 
-/* Your additional custom styles here */
+/* Add this to your CSS file (e.g., index.css) */
+.hero-background {
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .hero-background {
+        background-size: 120%;
+        /* Show more of the image on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-background {
+        background-size: contain;
+        /* Make sure the entire image fits */
+    }
+}

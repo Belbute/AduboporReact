@@ -7,10 +7,10 @@ export default function App() {
     <div className="bg-app-2">
       <div
         style={{
-          backgroundImage: "url('src/assets/AduboporBackground2.4.1.png')",
+          backgroundImage: "url('src/assets/AduboporBackground2.4.3.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "100vh", // Ensure it takes the full viewport height
+          height: "105vh", // Ensure it takes the full viewport height
           overflow: "hidden", // Prevents content overflow
         }}
       >

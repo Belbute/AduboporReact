@@ -1,4 +1,3 @@
-import React from "react";
 import { ScrollParallax } from "react-just-parallax";
 import birdsImage from "../assets/Birds.png"; // Adjust the path to your bird PNG
 
@@ -21,12 +20,14 @@ const Hero = () => {
             <img
               src={birdsImage}
               alt="Flying Birds"
-              className=" absolute scale-[115%] -translate-y-[2rem] translate-x-[6rem] md:scale-105 md:translate-x-[10rem] md:-translate-y-[2rem] lg:scale-100 lg:translate-y-[10rem] xl:w-[80%] xl:translate-x-[30rem] xl:translate-y-[7rem]" // Position the birds
+              className=" absolute scale-[130%] -translate-y-[2rem] translate-x-[7rem] md:scale-110 md:translate-x-[14rem] md:-translate-y-[2rem] lg:scale-100 lg:translate-y-[10rem] xl:w-[80%] xl:translate-x-[30rem] xl:translate-y-[7rem]" // Position the birds
             />
           </ScrollParallax>
 
           {/* Hero Content */}
-          <ScrollParallax isAbsolutelyPositioned strength={0.1}>
+          <ScrollParallax strength={0.1}>
+            {" "}
+            {/* Remove isAbsolutelyPositioned */}
             <div className="relative z-0 text-center text-black px-5 lg:translate-y-[15rem]">
               <div className="mb-10">
                 <h1 className="text-4xl md:text-6xl font-bold mb-4 ">Bem-vindo à Adubopor</h1>
@@ -35,10 +36,9 @@ const Hero = () => {
                   <br /> com uma qualidade que vem desde 1986.
                 </p>
               </div>
-              {/* Button with Padding Instead of Margin */}
               <a
                 href="#visit"
-                className="z-0 inline-block text-sm px-6 py-2 md:text-lg bg-app-3 hover:scale-[115%] text-white font-semibold rounded-full transition duration-300 ease-in-"
+                className="z-10 inline-block text-sm px-6 py-2 md:text-lg bg-app-3 hover:scale-[115%] text-white font-semibold rounded-full transition duration-300 ease-in-"
               >
                 Produtos
               </a>

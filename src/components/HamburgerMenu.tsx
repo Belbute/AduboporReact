@@ -13,7 +13,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ opened, onClick }) => {
       onClick={onClick}
     >
       <div className="tham-box">
-        <div className="tham-inner  bg-white " />
+        <div className="tham-inner bg-teal-500" />
       </div>
     </div>
   );

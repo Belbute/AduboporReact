@@ -29,7 +29,7 @@ const Header = () => {
     <nav className="fixed z-20 top-0 left-0 right-0 p-3 bg-gradient-to-b from-black to-black/">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <div className="left-0 w-[8rem] text-2xl font-bold z-20">
+        <div className="left-0 w-[8rem] text-2xl font-bold z-40">
           <img src={Logo} alt="Logo" />
         </div>
 
