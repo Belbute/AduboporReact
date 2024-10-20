@@ -1,6 +1,6 @@
 // src/data/lists.ts
 export const NavBarItems = [
-  { label: "Home", href: "#Hero" },
+  { label: "Home", href: "#Header" },
   { label: "Gallery", href: "#Gallery" },
   { label: "About us", href: "#AboutUs" },
   { label: "Contacts", href: "#Contact" },

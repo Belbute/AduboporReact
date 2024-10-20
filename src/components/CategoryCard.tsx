@@ -9,7 +9,7 @@ interface CategoryCardProps {
 const CategoryCard: React.FC<CategoryCardProps> = ({ category, imageSrc, className }) => {
   return (
     <div
-      className={`relative h-60 lg:h-full  bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${className}`}
+      className={`relative h-60 lg:h-full bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${className}`}
     >
       <img
         src={imageSrc}

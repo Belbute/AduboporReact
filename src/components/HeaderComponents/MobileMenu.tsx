@@ -1,10 +1,13 @@
-import { NavBarItems } from "../../data/lists.ts";
+// MobileMenu.tsx
+import React from "react";
+import { NavBarItems } from "../../data/lists"; // Adjust the import path as necessary
 
 interface MobileMenuProps {
-  isOpen: boolean; // Define the type for isOpen
+  isOpen: boolean;
+  closeMenu: () => void; // Add the closeMenu prop
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
   return (
     <div
       className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-black z-30 flex justify-center items-center
@@ -22,6 +25,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen }) => {
             <a
               href={link.href}
               className="bg-black opacity-100 border-4 block text-center rounded-2xl p-4 transition-transform duration-200 ease-in-out w-full"
+              onClick={closeMenu} // Close menu on link click
             >
               {link.label}
             </a>

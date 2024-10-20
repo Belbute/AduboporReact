@@ -2,31 +2,38 @@
 import { useEffect, useState } from "react";
 import LogoImage from "../assets/AduboporLogo.png"; // Adjust the import path as necessary
 import Logo from "./HeaderComponents/Logo";
-import MobileMenu from "./HeaderComponents/MobileMenu.tsx"; // Adjust the import path as necessary
+import MobileMenu from "./HeaderComponents/MobileMenu"; // Adjust the import path as necessary
 import HamburgerMenu from "./HeaderComponents/HamburgerMenu"; // Adjust the import path as necessary
 import ExpandableButton from "./ExpandableButton"; // Adjust the import path as necessary
-import { NavBarItems } from "../data/lists"; // Adjust the import path to go up two levels if necessary
+import { NavBarItems } from "../data/lists"; // Adjust the import path as necessary
 import mapSVG from "../assets/SVG/Map.svg";
-import { enablePageScroll } from "scroll-lock";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 const Header = () => {
   const [openNavigation, setOpenNavigation] = useState(false);
 
   // Toggle the navigation menu and scroll behavior
   const toggleNavigation = () => {
-    setOpenNavigation((prev) => !prev);
+    setOpenNavigation((prev) => {
+      if (prev) {
+        enablePageScroll(); // Enable scroll if the menu is closing
+      } else {
+        disablePageScroll(); // Disable scroll if the menu is opening
+      }
+      return !prev; // Toggle the state
+    });
   };
 
+  // Cleanup scroll behavior when component unmounts
   useEffect(() => {
-    // Cleanup scroll behavior when component unmounts
-    return () => enablePageScroll();
+    return () => enablePageScroll(); // Ensure scroll is enabled when the component unmounts
   }, []);
 
   return (
     <nav className="z-20 top-0 left-0 right-0 p-3 bg-gradient-to-b from-black to-black/">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <Logo src={LogoImage} alt="Adubopor Logo" /> {/* Use the imported image here */}
+        <Logo src={LogoImage} alt="Adubopor Logo" />
         {/* Hamburger menu for mobile */}
         <div className="lg:hidden text-white z-40">
           <HamburgerMenu
@@ -37,7 +44,7 @@ const Header = () => {
           />
         </div>
         {/* Nav Links for larger screens */}
-        <ul className="hidden ml-8 lg:flex space-x-8 text-white text-lg ">
+        <ul className="hidden ml-8 lg:flex space-x-8 text-white text-lg">
           {NavBarItems.map((link, index) => (
             <li
               key={index}
@@ -65,7 +72,7 @@ const Header = () => {
       </div>
 
       {/* Dropdown menu for smaller screens */}
-      <MobileMenu isOpen={openNavigation} />
+      <MobileMenu isOpen={openNavigation} closeMenu={toggleNavigation} />
     </nav>
   );
 };
