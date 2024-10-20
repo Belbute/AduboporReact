@@ -8,7 +8,7 @@ const categories = [
   { name: "Seeds", image: "src/assets/AduboporBackground2.3.png" },
 ];
 const Spacer: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`hidden bg-app-2 rounded-lg lg:block ${className}`} />
+  <div className={`hidden bg-app-main rounded-lg lg:block ${className}`} />
 );
 
 const ProductCategories = () => {
@@ -18,8 +18,8 @@ const ProductCategories = () => {
       id="Products"
     >
       {/* Text Section (Left Side) */}
-      <div className="lg:w-1/3 flex flex-col justify-center">
-        <h2 className="text-4xl font-bold mb-7">Explore Our Products</h2>
+      <div className="lg:w-1/3 flex flex-col justify-center text-textColors-light">
+        <h2 className="text-4xl font-bold mb-7 ">Explore Our Products</h2>
         <p className="text-lg mb-4">
           At Adubopor, we offer a wide range of products tailored for your garden, pets, and home.
           Whether you’re a seasoned gardener or a pet enthusiast, our products ensure quality and

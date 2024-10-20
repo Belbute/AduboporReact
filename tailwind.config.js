@@ -10,11 +10,17 @@ export default {
       colors: {
         app: {
           1: "#EBECE0",
-          2: "#B8CACA",
+          main: "#122234",
           3: "#754F30",
           4: "#4E3B31",
           5: "#4B7F6E",
           6: "#A05A2E",
+        },
+        // New dedicated text colors
+        textColors: {
+          Dark: "#122234", // Dark gray for primary text
+          secondary: "#666666", // Medium gray for secondary text
+          light: "#EBEBEB", // White for text on dark backgrounds
         },
       },
     },

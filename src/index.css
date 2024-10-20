@@ -13,24 +13,6 @@ body {
     /* Replace with your chosen font */
 }
 
-/* Add this to your CSS file (e.g., index.css) */
-.hero-background {
-    background-size: cover;
-}
-
-@media (max-width: 768px) {
-    .hero-background {
-        background-size: 120%;
-        /* Show more of the image on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-background {
-        background-size: contain;
-        /* Make sure the entire image fits */
-    }
-}
 
 .combined-parallax-container {
     @apply flex flex-col justify-center items-center;
@@ -51,4 +33,39 @@ body {
     @apply w-full;
     height: calc(40% * var(--aspect-ratio));
     /* 40% of the container's height */
+}
+
+.LandingBackground {
+    background-size: cover;
+    background-position: center;
+    height: 105vh;
+    overflow: hidden;
+}
+
+@media (min-width: 0px) {
+    .LandingBackground {
+        background-image: url('src/assets/AduboporPortraitBackground.png');
+        /* Small devices */
+    }
+}
+
+@media (min-width: 640px) {
+    .LandingBackground {
+        background-image: url('src/assets/AduboporPortraitBackground.png');
+        /* Small devices */
+    }
+}
+
+@media (min-width: 768px) {
+    .LandingBackground {
+        background-image: url('src/assets/AduboporBackground2.4.3.png');
+        /* Medium devices */
+    }
+}
+
+@media (min-width: 1024px) {
+    .LandingBackground {
+        background-image: url('src/assets/AduboporBackground2.4.3.png');
+        /* Large devices */
+    }
 }

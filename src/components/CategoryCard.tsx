@@ -18,7 +18,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, imageSrc, classNa
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black opacity-30 hover:opacity-50 transition-opacity duration-300"></div>
-      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-to-transparent text-white text-center backdrop:backdrop-blur-3xl">
+      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-to-transparent text-textColors-light text-center backdrop:backdrop-blur-3xl">
         <h3 className="text-xl">{category.name}</h3>
       </div>
     </div>

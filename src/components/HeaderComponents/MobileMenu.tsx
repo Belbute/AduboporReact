@@ -4,27 +4,23 @@ import { NavBarItems } from "../../data/lists"; // Adjust the import path as nec
 
 interface MobileMenuProps {
   isOpen: boolean;
-  closeMenu: () => void; // Add the closeMenu prop
+  closeMenu: () => void; // Function to close the menu
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
   return (
     <div
-      className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-black z-30 flex justify-center items-center
-        transition-opacity duration-700 ease-in-out transform ${
-          isOpen ? "opacity-90 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
-        }`}
+      className={`fixed inset-0 bg-gray-900/95 z-20 transition-opacity duration-300 ease-in-out ${
+        isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+      aria-hidden={!isOpen}
     >
-      <ul
-        className={`flex flex-col items-center justify-center w-6/12 space-y-5 text-white text-xl transition-transform duration-1000 ease-in-out sm:text-3xl ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
+      <ul className="flex flex-col items-center justify-center h-full space-y-8">
         {NavBarItems.map((link, index) => (
-          <li key={index} className="w-full">
+          <li key={index} className="text-textColors-light text-lg font-medium">
             <a
               href={link.href}
-              className="bg-black opacity-100 border-4 block text-center rounded-2xl p-4 transition-transform duration-200 ease-in-out w-full"
+              className="px-4 py-2 rounded hover:bg-white hover:text-gray-900 transition-colors duration-300"
               onClick={closeMenu} // Close menu on link click
             >
               {link.label}
