@@ -31,3 +31,24 @@ body {
         /* Make sure the entire image fits */
     }
 }
+
+.combined-parallax-container {
+    @apply flex flex-col justify-center items-center;
+    --aspect-ratio: 1.5;
+    /* Adjust this to your desired aspect ratio */
+    aspect-ratio: var(--aspect-ratio);
+    width: 100%;
+    height: 100%;
+}
+
+.birds-image {
+    @apply w-full;
+    height: calc(60% * var(--aspect-ratio));
+    /* 60% of the container's height */
+}
+
+.hero-content {
+    @apply w-full;
+    height: calc(40% * var(--aspect-ratio));
+    /* 40% of the container's height */
+}

@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import CategoryCard from "./CategoryCard";
 
 const categories = [
@@ -67,7 +66,7 @@ const ProductCategories = () => {
         <CategoryCard
           category={categories[4]}
           imageSrc={categories[4].image}
-          className="md:col-span-2 md:row-span-1 lg:col-span-1 lg:row-span-2"
+          className="sm:col-span-2 sm:h-60 md:row-span-1 lg:col-span-1 lg:row-span-2"
         />
       </div>
     </div>
