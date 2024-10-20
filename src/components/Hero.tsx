@@ -19,7 +19,7 @@ const Hero = () => {
           <ScrollParallax isAbsolutelyPositioned strength={0.1}>
             <img
               src={birdsImage}
-              alt="Flying Birds"
+              alt=""
               className=" absolute scale-[130%] -translate-y-[2rem] translate-x-[7rem] md:scale-110 md:translate-x-[14rem] md:-translate-y-[2rem] lg:scale-100 lg:translate-y-[10rem] xl:w-[80%] xl:translate-x-[30rem] xl:translate-y-[7rem]" // Position the birds
             />
           </ScrollParallax>
