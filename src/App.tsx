@@ -4,7 +4,9 @@ import Hero from "./components/Hero";
 import Testimonials from "./components/Testimonials";
 import ProductCategories from "./components/ProductCategories";
 import { useState } from "react";
-
+import wave from "./assets/SVG/wave.svg";
+import TimelineSlider from "./components/Timeline";
+import Timeline from "./components/Timeline";
 export default function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -19,8 +21,18 @@ export default function App() {
           <Header />
           <Hero />
         </div>
+
         <ProductCategories />
+        <img
+          src={wave}
+          alt="Wave Separator"
+          style={{ width: "100%", height: "100%", verticalAlign: "middle" }}
+        />
+
         <Testimonials />
+
+        <Timeline />
+
         <div className="relative bg-gradient-to-b from-app-1 to-app-2" style={{ height: "500px" }}>
           <h2 className="text-center pt-20">Scroll Down to See the Button</h2>
         </div>

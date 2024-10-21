@@ -26,7 +26,7 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="z-20 top-0 left-0 right-0 p-3 bg-gradient-to-b from-black to-black/">
+    <nav className="z-40 top-0 left-0 right-0 p-3 bg-gradient-to-b from-black to-black/">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <Logo src={LogoImage} alt="Adubopor Logo" />
@@ -40,7 +40,7 @@ const Header = () => {
           />
         </div>
         {/* Nav Links for larger screens */}
-        <ul className="hidden ml-8 lg:flex space-x-8 text-textColors-light text-lg">
+        <ul className="hidden ml-8 lg:flex space-x-8 text-textColors-light text-lg z-30">
           {NavBarItems.map((link, index) => (
             <li
               key={index}
@@ -48,7 +48,7 @@ const Header = () => {
             >
               <a
                 href={link.href}
-                className="rounded-2xl hover:bg-app-3 hover:text-textColors-light transform pl-3 pr-3 pt-1 pb-1"
+                className="rounded-2xl hover:bg-app-3 hover:text-textColors-light hover:border-2 transform pl-3 pr-3 pt-1 pb-1"
                 onClick={() => isMenuOpen && toggleMenu()} // Close mobile menu when clicking links, if open
               >
                 {link.label}
@@ -60,7 +60,7 @@ const Header = () => {
         <div className="hidden lg:flex space-x-4 w-40 justify-end">
           <ExpandableButton
             href="#visit"
-            className="bg-app-3 text-textColors-light px-2 rounded-3xl"
+            className="bg-app-3 text-textColors-light px-3 rounded-3xl z-30 border-2"
             ImgSrc={mapSVG}
           >
             Visite-nos

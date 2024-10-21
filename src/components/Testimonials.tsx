@@ -3,42 +3,32 @@ import { TestimonialsData } from "../data/lists";
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8" id="testimonials">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-textColors-light">Testimonials</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {TestimonialsData.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
-            >
-              <img
-                className="w-24 h-24 rounded-full mb-4"
-                src={testimonial.image}
-                alt={testimonial.name}
-              />
-              <h3 className="text-xl font-semibold">{testimonial.name}</h3>
-              <p className="text-md text-black">{testimonial.title}</p>
-              <div className="flex justify-center mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className={`w-5 h-5 ${
-                      i < testimonial.rating ? "text-yellow-400" : "text-gray-300"
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.98a1 1 0 00.95.69h4.209c.969 0 1.371 1.24.588 1.81l-3.405 2.484a1 1 0 00-.364 1.118l1.286 3.98c.3.921-.755 1.688-1.538 1.118l-3.405-2.484a1 1 0 00-1.175 0l-3.405 2.484c-.783.57-1.838-.197-1.538-1.118l1.286-3.98a1 1 0 00-.364-1.118L2.23 9.407c-.783-.57-.38-1.81.588-1.81h4.209a1 1 0 00.95-.69l1.286-3.98z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="mt-4 text-bl">{testimonial.testimonial}</p>
-            </div>
-          ))}
-        </div>
+    <div
+      className=" mx-auto py-40 px-4 sm:px-6 flex flex-col lg:flex-row gap-10 bg-app-secondary"
+      id="testimonials"
+    >
+      {/* Testimonials Section (Left Side) */}
+      <div className="grid mx-auto grid-cols-1 gap-4 grid-rows-4 sm:grid-cols-2 lg:w-1/2 lg:grid-cols-6 lg:grid-rows-[100px_100px_100px_100px_100px_100px] lg:gap-y-3 lg:gap-x-3 lg:grid-flow-row">
+        <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center lg:col-span-2 lg:row-span-3"></div>
+        <div className="bg-yellow-500 p-8 rounded-xl shadow-lg flex flex-col items-center text-center lg:row-span-3 lg:col-span-3"></div>
+        <div className="bg-red-500 p-8 rounded-xl shadow-lg flex flex-col items-center text-center lg:row-span-3 lg:col-span-3"></div>
+        <div className="bg-blue-500 p-8 rounded-xl shadow-lg flex flex-col items-center text-center lg:row-span-3 lg:col-span-2"></div>
       </div>
-    </section>
+      <div className="hidden lg:block lg:w-5px"></div>
+      <div className="lg:w-[5px]"></div>
+      {/* Text Section (Right Side) */}
+      <div className=" mx-auto lg:w-1/3 flex flex-col justify-center text-textColors-light">
+        <h2 className="text-4xl font-bold mb-7">What People Say About Us</h2>
+        <p className="text-lg mb-4">
+          Our clients have always been at the heart of our business. Here's what some of them have
+          to say about our products and services.
+        </p>
+        <p className="text-lg">
+          We are proud to have served and continue to serve clients with exceptional quality. Their
+          testimonials highlight our dedication to customer satisfaction.
+        </p>
+      </div>
+    </div>
   );
 };
 

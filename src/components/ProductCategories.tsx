@@ -14,7 +14,7 @@ const Spacer: React.FC<{ className?: string }> = ({ className }) => (
 const ProductCategories = () => {
   return (
     <div
-      className="container mx-auto py-10 px-4 sm:px-6 flex flex-col lg:flex-row gap-10"
+      className="container mx-auto py-20 pt-40 px-4 sm:px-6 flex flex-col lg:flex-row gap-10"
       id="Products"
     >
       {/* Text Section (Left Side) */}

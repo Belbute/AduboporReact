@@ -1,4 +1,7 @@
-// src/data/lists.tsx
+import AduboporBackground from "../assets/AduboporBackground.png";
+import AduboporBackground2 from "../assets/AduboporBackground2.png"; // src/data/lists.tsx
+import AduboporBackground3 from "../assets/AduboporBackground2.2.png";
+import AduboporBackground4 from "../assets/AduboporBackground2.3.png";
 
 export const NavBarItems = [
   { label: "Home", href: "#Header" },
@@ -71,9 +74,31 @@ export const TestimonialsData: Testimonial[] = [
 ];
 
 // Define the TimelineEvent interface
-export interface TimelineEvent {
-  date: string;
-  title: string;
-  description: string;
-  image: string;
-}
+// ../data/lists.js
+export const timelineEvents = [
+  {
+    date: "1986",
+    image: AduboporBackground,
+    event: "Primeira Abertura",
+    text: "In January 1986, we proudly opened our doors for the first time, marking the beginning of our journey",
+  },
+  {
+    date: "1988",
+    image: AduboporBackground2,
+    event: "O Incêndio",
+    text: "A devastating fire swept through in February 1988, testing our resilience and strength.",
+  },
+  {
+    date: "1990",
+    image: AduboporBackground3,
+    event: "Novas Instalações",
+    text: "In March 1990, we unveiled our new facilities, a testament to our dedication and growth.",
+  },
+  {
+    date: "1996",
+    image: AduboporBackground4,
+    event: "Loja de Animais",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore",
+  },
+  // Add more events as needed
+];
