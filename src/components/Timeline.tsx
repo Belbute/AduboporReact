@@ -8,15 +8,8 @@ const Timeline = () => {
 
   return (
     <div className="h-[130vh] lg:h-[100vh] relative">
-      {/* Header or Spacer div */}
-      <div className="h-[10%] bg-red-500 relative">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" className="text-purple-500">
-  <path className="fill-current bg-app-secondary h-full" fill-opacity="1" d="M0,96L60,101.3C120,107,240,117,360,133.3C480,149,600,171,720,165.3C840,160,960,128,1080,117.3C1200,107,1320,117,1380,122.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-</svg>
-      </div>
-
       {/* Background and Timeline Events */}
-      <div className="h-[90%] w-full relative">
+      <div className="h-[100%] w-full relative">
         {timelineEvents.map((event, index) => (
           <motion.div
             key={index}
@@ -30,7 +23,7 @@ const Timeline = () => {
       </div>
 
       {/* Gradient Layer - Positioned above the image, but below text */}
-      <div className="absolute top-[10%] right-0 h-[90%] w-full bg-gradient-to-l from-black to-black/40 z-10 pointer-events-none"></div>
+      <div className="absolute top-[0%] right-0 h-[100%] w-full bg-gradient-to-l from-black to-black/40 z-10 pointer-events-none"></div>
 
       {/* Text Layer styled like the provided image */}
       <motion.div
