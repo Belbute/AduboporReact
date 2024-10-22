@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { timelineEvents } from "../data/lists";
-import wave from "../assets/SVG/wave.svg";
 
 const Timeline = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,16 +8,9 @@ const Timeline = () => {
   return (
     <div className="h-[130vh] lg:h-[100vh] relative">
       {/* Header or Spacer div */}
-      <div className="h-[10%] bg-red-500">
-        <img
-          src={wave}
-          alt="Wave Separator"
-          style={{ width: "100%", height: "100%", verticalAlign: "middle" }}
-        />
-      </div>
 
       {/* Background and Timeline Events */}
-      <div className="h-[90%] w-full relative">
+      <div className="h-[100%] w-full relative">
         {timelineEvents.map((event, index) => (
           <motion.div
             key={index}
@@ -32,7 +24,7 @@ const Timeline = () => {
       </div>
 
       {/* Gradient Layer - Positioned above the image, but below text */}
-      <div className="absolute top-[10%] right-0 h-[90%] w-full bg-gradient-to-l from-black to-black/40 z-10 pointer-events-none"></div>
+      <div className="absolute top-[0%] right-0 h-[100%] w-full bg-gradient-to-l from-black to-black/40 z-10 pointer-events-none"></div>
 
       {/* Text Layer styled like the provided image */}
       <motion.div
