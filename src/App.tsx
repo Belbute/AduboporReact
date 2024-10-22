@@ -28,8 +28,10 @@ export default function App() {
           alt="Wave Separator"
           style={{ width: "100%", height: "100%", verticalAlign: "middle" }}
         />
+        <div className="bg-app-secondary">
+          <Testimonials />
+        </div>
 
-        <Testimonials />
 
         <Timeline />
 
