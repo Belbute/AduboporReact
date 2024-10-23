@@ -26,7 +26,7 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="z-40 top-0 left-0 right-0 p-3 bg-gradient-to-b from-black to-black/">
+    <nav className=" z-40 top-0 left-0 right-0 p-3 bg-gradient-to-b from-black to-transparent">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <Logo src={LogoImage} alt="Adubopor Logo" />

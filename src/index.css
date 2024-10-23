@@ -34,7 +34,7 @@ body {
     background-size: cover;
     background-position: center;
     height: 105vh;
-    overflow: hidden;
+
 }
 
 @media (min-width: 0px) {
