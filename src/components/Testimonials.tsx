@@ -25,25 +25,25 @@ const Testimonials: React.FC = () => {
           content="This is a wonderful service that I highly recommend!"
           className="lg:col-span-2 lg:row-span-3"
           imageUrl="src/assets/AduboporBackground2.3.png"
-          stars={5}
+          clovers={5}
         />
         <TestimonialCard
           content="Exceptional quality and support from this company!"
           className="lg:row-span-3 lg:col-span-3"
           imageUrl="src/assets/AduboporBackground2.3.png"
-          stars={4}
+          clovers={4}
         />
         <TestimonialCard
           content="We are absolutely thrilled with our experience."
           className="lg:row-span-3 lg:col-span-3"
           imageUrl="src/assets/AduboporBackground2.3.png"
-          stars={5}
+          clovers={5}
         />
         <TestimonialCard
           content="Great products and an even better team behind them."
           className="lg:row-span-3 lg:col-span-2"
           imageUrl="src/assets/AduboporBackground2.3.png"
-          stars={3}
+          clovers={3}
         />
       </div>
     </div>

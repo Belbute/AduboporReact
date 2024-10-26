@@ -1,21 +1,22 @@
 import React from "react";
+import Clover from "../assets/SVG/Clover.svg";
 
 interface TestimonialCardProps {
   content: string;
   className?: string;
   imageUrl?: string;
-  stars?: number;
+  clovers?: number;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   content,
   className = "",
   imageUrl,
-  stars = 0,
+  clovers = 0,
 }) => {
   return (
     <div
-      className={`min-h-60 p-8 rounded-2xl shadow-md flex flex-col items-center justify-center text-center bg-cream ${className} transform transition-transform hover:scale-105 hover:shadow-lg`}
+      className={`min-h-60 p-8 rounded-2xl shadow-md flex flex-col items-center justify-center text-center bg-[#f5f5dc] ${className} transform transition-transform hover:scale-105 hover:shadow-lg`}
     >
       {imageUrl && (
         <img
@@ -25,16 +26,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         />
       )}
       <div className="flex mb-4 justify-center space-x-1">
-        {Array.from({ length: stars }, (_, index) => (
-          <svg
-            key={index}
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-green-600"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M12 .587l3.668 7.429 8.167 1.191-5.897 5.747 1.392 8.107L12 18.896l-7.33 3.855 1.392-8.107-5.897-5.747 8.167-1.191z" />
-          </svg>
+        {Array.from({ length: clovers }).map((_, index) => (
+          <img key={index} src={Clover} alt="Clover" className="h-5 w-5 text-green-600" />
         ))}
       </div>
       <p className="italic text-lg font-light">{content}</p>
