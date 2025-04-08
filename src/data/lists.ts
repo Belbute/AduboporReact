@@ -1,5 +1,5 @@
 import AduboporBackground from "../assets/AduboporBackground.png";
-import AduboporBackground2 from "../assets/AduboporBackground2.png"; // src/data/lists.tsx
+import AduboporBackground2 from "../assets/AduboporBackground2.png";
 import AduboporBackground3 from "../assets/AduboporBackground2.2.png";
 import AduboporBackground4 from "../assets/AduboporBackground2.3.png";
 
@@ -21,61 +21,64 @@ export const FooterItems = [
 export interface Testimonial {
   name: string;
   title: string;
-  image: string;
-  testimonial: string;
-  rating: number;
+  content: string; // Changed from 'testimonial' to match your component
+  imageUrl?: string; // Added to match your TestimonialCard props
+  clovers?: number; // Added to match your rating system (1-5 clovers)
 }
 
-// Export the testimonials data
+// Export the testimonials data with Portuguese agricultural theme
 export const TestimonialsData: Testimonial[] = [
   {
-    name: "John Doe",
-    title: "CEO at Acme Corp",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    testimonial: "This product has significantly improved our workflow and productivity.",
-    rating: 5,
+    name: "Carlos Mendes",
+    title: "Agricultor, Alentejo",
+    content:
+      "Os fertilizantes da Adubopor revolucionaram a minha produção de trigo. Nunca tive colheitas tão abundantes!",
+    clovers: 5,
   },
   {
-    name: "Jane Smith",
-    title: "Marketing Manager at Beta Inc",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
-    testimonial: "An essential tool for our team. Highly recommended!",
-    rating: 4,
+    name: "Ana Silva",
+    title: "Proprietária, Quinta das Flores",
+    content:
+      "Produtos de excelente qualidade e um atendimento impecável. Recomendo a todos os meus colegas agricultores.",
+    clovers: 4,
   },
   {
-    name: "Samuel Green",
-    title: "CTO at Gamma LLC",
-    image: "https://randomuser.me/api/portraits/men/65.jpg",
-    testimonial: "A game-changer in our industry. Exceptional support and features.",
-    rating: 5,
+    name: "João Pereira",
+    title: "Engenheiro Agrónomo",
+    content:
+      "Como profissional da área, posso afirmar que a Adubopor oferece soluções equilibradas e eficazes para qualquer tipo de cultura.",
+    clovers: 5,
   },
   {
-    name: "Emily Johnson",
-    title: "Product Manager at Delta Co",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
-    testimonial: "User-friendly interface and excellent customer service.",
-    rating: 4,
+    name: "Maria Fernandes",
+    title: "Produtora de Vinho, Douro",
+    content: "As minhas vinhas nunca estiveram tão saudáveis. Os resultados falam por si!",
+    clovers: 5,
   },
   {
-    name: "Michael Brown",
-    title: "Entrepreneur",
-    image: "https://randomuser.me/api/portraits/men/22.jpg",
-    testimonial: "Helped me scale my business to new heights.",
-    rating: 5,
+    name: "Rui Gonçalves",
+    title: "Cooperativa Agrícola do Centro",
+    content: "Parceiros confiáveis há mais de 10 anos. Sempre entregam o que prometem.",
+    clovers: 4,
   },
   {
-    name: "Sarah Williams",
-    title: "Freelancer",
-    image: "https://randomuser.me/api/portraits/women/95.jpg",
-    testimonial: "A must-have tool for freelancers!",
-    rating: 5,
+    name: "Sofia Martins",
+    title: "Horticultora Biológica",
+    content:
+      "Encontrei na Adubopor os fertilizantes perfeitos para a minha agricultura sustentável.",
+    clovers: 5,
   },
-  // Add more testimonials as needed
 ];
 
 // Define the TimelineEvent interface
-// ../data/lists.js
-export const timelineEvents = [
+export interface TimelineEvent {
+  date: string;
+  image: string;
+  event: string;
+  text: string;
+}
+
+export const timelineEvents: TimelineEvent[] = [
   {
     date: "1986",
     image: AduboporBackground,
@@ -100,5 +103,4 @@ export const timelineEvents = [
     event: "Loja de Animais",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore",
   },
-  // Add more events as needed
 ];

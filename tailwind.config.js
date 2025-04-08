@@ -12,7 +12,7 @@ export default {
           1: "#EBECE0",
           main: "#122234",
           3: "#754F30",
-          secondary: "#385566",
+          secondary: "#91B1C4",
           5: "#4B7F6E",
           6: "#A05A2E",
         },
