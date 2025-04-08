@@ -36,7 +36,7 @@ const Header = () => {
           </Link>
         </motion.div>
         {/* Hamburger menu for mobile */}
-        <div className="lg:hidden text-textColors-light z-40">
+        <div className="lg:hidden text-textColors-light z-[101]">
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}

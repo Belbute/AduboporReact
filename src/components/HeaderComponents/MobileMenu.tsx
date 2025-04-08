@@ -44,7 +44,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
           animate="open"
           exit="closed"
           variants={menuVariants}
-          className="fixed inset-0 bg-gradient-to-b from-black to-app-main/95 backdrop-blur-sm z-20 flex items-center justify-center"
+          className="fixed top-0 left-0 w-full h-full bg-gradient-to-b from-black to-app-main/95 backdrop-blur-sm z-[100] flex items-center justify-center"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            overflowY: "auto",
+          }}
           aria-hidden={!isOpen}
         >
           <motion.div
