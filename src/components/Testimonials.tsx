@@ -79,15 +79,8 @@ const Testimonials: React.FC = () => {
               </p>
             </div>
 
-            {/* Testimonial Card */}
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5 }}
-              className="p-6 rounded-lg bg-app-secondary/10 border border-app-secondary/20"
-            >
+            {/* Fixed Testimonial Card */}
+            <div className="p-6 rounded-lg bg-app-secondary/10 border border-app-secondary/20">
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-app-secondary/20 rounded-lg text-app-secondary">
                   <svg
@@ -105,62 +98,77 @@ const Testimonials: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <div className="space-y-4">
-                  <div className="flex">
-                    {TestimonialsData[currentIndex].clovers &&
-                      [...Array(5)].map((_, i) => (
-                        <svg
-                          key={i}
-                          xmlns="http://www.w3.org/2000/svg"
-                          className={`h-5 w-5 ${
-                            i < TestimonialsData[currentIndex].clovers!
-                              ? "text-textColors-light"
-                              : "text-textColors-light/30"
-                          }`}
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 3.56L7.695 8.2 2.8 9.12l3.6 3.517-.85 4.963 4.45-2.337 4.45 2.337-.85-4.963 3.6-3.518-4.895-.918L10 3.56z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      ))}
-                  </div>
-                  <h3 className="text-lg font-semibold text-textColors-light">
-                    {TestimonialsData[currentIndex].title}
-                  </h3>
-                  <p className="text-textColors-light/80 italic">
-                    "{TestimonialsData[currentIndex].content}"
-                  </p>
-                  <div className="flex items-center gap-2 pt-2">
-                    <div className="w-8 h-8 rounded-full bg-app-secondary/20 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-app-secondary"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-textColors-light font-medium">
-                        {TestimonialsData[currentIndex].name}
-                      </p>
-                      <p className="text-textColors-light/60 text-sm">Happy Customer</p>
-                    </div>
-                  </div>
+
+                {/* Animated Content */}
+                <div className="space-y-4 min-h-[220px] relative flex-1">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentIndex}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute inset-0"
+                    >
+                      <div className="space-y-4">
+                        <div className="flex">
+                          {TestimonialsData[currentIndex].clovers &&
+                            [...Array(5)].map((_, i) => (
+                              <svg
+                                key={i}
+                                xmlns="http://www.w3.org/2000/svg"
+                                className={`h-5 w-5 ${
+                                  i < TestimonialsData[currentIndex].clovers!
+                                    ? "text-textColors-light"
+                                    : "text-textColors-light/30"
+                                }`}
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M10 3.56L7.695 8.2 2.8 9.12l3.6 3.517-.85 4.963 4.45-2.337 4.45 2.337-.85-4.963 3.6-3.518-4.895-.918L10 3.56z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                            ))}
+                        </div>
+                        <h3 className="text-lg font-semibold text-textColors-light">
+                          {TestimonialsData[currentIndex].title}
+                        </h3>
+                        <p className="text-textColors-light/80 italic">
+                          "{TestimonialsData[currentIndex].content}"
+                        </p>
+                        <div className="flex items-center gap-2 pt-2">
+                          <div className="w-8 h-8 rounded-full bg-app-secondary/20 flex items-center justify-center">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4 text-app-secondary"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                              />
+                            </svg>
+                          </div>
+                          <div>
+                            <p className="text-textColors-light font-medium">
+                              {TestimonialsData[currentIndex].name}
+                            </p>
+                            <p className="text-textColors-light/60 text-sm">Happy Customer</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Navigation Buttons */}
             <div className="flex gap-4">

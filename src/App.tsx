@@ -1,12 +1,8 @@
-import MenuContext from "./MenuContext"; // Make sure to create this context file
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Testimonials from "./components/Testimonials";
-import ProductCategories from "./components/ProductCategories";
+import MenuContext from "./MenuContext";
 import { useState } from "react";
-import VisitUs from "./components/VisitUs";
-import ContactUs from "./components/ContactUs";
-import Timeline from "./components/Timeline";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import GalleryPage from "./components/GalleryPage";
 
 export default function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -17,22 +13,12 @@ export default function App() {
 
   return (
     <MenuContext.Provider value={{ isMenuOpen, toggleMenu }}>
-      <div className="bg-app-main">
-        <div className="LandingBackground">
-          <Header />
-          <Hero />
-        </div>
-
-        <ProductCategories />
-        <div className="py-16 bg-app-main">
-          <Testimonials />
-        </div>
-        <Timeline />
-
-        <VisitUs />
-
-        <ContactUs />
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+        </Routes>
+      </Router>
     </MenuContext.Provider>
   );
 }
