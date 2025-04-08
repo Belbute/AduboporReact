@@ -16,93 +16,198 @@ const Testimonials: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % TestimonialsData.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + TestimonialsData.length) % TestimonialsData.length);
+  };
+
   return (
-    <section className="container mx-auto py-16 md:py-24 px-4 sm:px-6 lg:px-8" id="testimonials">
-      <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
-        {/* Text Content */}
-        <div className="lg:w-1/2 lg:pl-8">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold mb-6 text-[#122234]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            What People Say About Us
-          </motion.h2>
-
+    <section className="bg-app-main py-24" id="testimonials">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Image Side */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
+            className="relative h-[500px]"
           >
-            <p className="text-lg text-[#122234]/90 mb-4 leading-relaxed">
-              Our clients have always been at the heart of our business. Here's what some of them
-              have to say about our products and services.
-            </p>
-            <p className="text-lg text-[#122234]/90 leading-relaxed">
-              We take pride in serving clients with exceptional quality. Their testimonials reflect
-              our dedication to customer satisfaction.
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                className="absolute inset-0 flex items-center"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              >
+                <div className="relative w-full h-full flex items-end justify-start">
+                  <motion.img
+                    src={images[currentIndex % images.length]}
+                    alt={TestimonialsData[currentIndex].name}
+                    className="max-h-[450px] w-auto object-contain"
+                    style={{ minHeight: "300px" }}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
-        </div>
 
-        {/* Image Carousel */}
-        <div className="lg:w-1/2 w-full h-[500px] relative pr-10">
-          <AnimatePresence mode="wait">
+          {/* Right Column - Content Side */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {/* Section Heading */}
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-textColors-light">
+                What People <span className="text-app-secondary">Say</span> About Us
+              </h2>
+              <div className="w-24 h-1 bg-app-secondary rounded-full"></div>
+              <p className="text-lg text-textColors-light/90 max-w-xl">
+                Our clients have always been at the heart of our business. Here's what some of them
+                have to say about our products and services.
+              </p>
+            </div>
+
+            {/* Testimonial Card */}
             <motion.div
               key={currentIndex}
-              className="absolute inset-0 flex items-center"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5 }}
+              className="p-6 rounded-lg bg-app-secondary/10 border border-app-secondary/20"
             >
-              <div className="relative h-full w-[70%] flex items-end justify-start">
-                <motion.img
-                  src={images[currentIndex % images.length]}
-                  alt={TestimonialsData[currentIndex].name}
-                  className="max-h-[500px] w-auto object-contain"
-                  style={{ minHeight: "300px" }}
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-
-              <div className="absolute left-[50%] top-[20%] w-[50%] bg-[#f5f5dc] p-6 rounded-2xl shadow-md before:content-[''] before:absolute before:right-full before:top-[30%] before:w-0 before:h-0 before:border-t-[20px] before:border-t-transparent before:border-r-[30px] before:border-r-[#f5f5dc] before:border-b-[20px] before:border-b-transparent">
-                <blockquote className="text-[#122234] italic text-lg md:text-xl">
-                  "{TestimonialsData[currentIndex].content}"
-                </blockquote>
-                <p className="mt-4 font-semibold text-[#AB7F6E] text-lg">
-                  — {TestimonialsData[currentIndex].name}
-                </p>
-                {TestimonialsData[currentIndex].clovers && (
-                  <div className="flex mt-2">
-                    {[...Array(5)].map((_, i) => (
+              <div className="flex items-start gap-4">
+                <div className="p-2 bg-app-secondary/20 rounded-lg text-app-secondary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                    />
+                  </svg>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex">
+                    {TestimonialsData[currentIndex].clovers &&
+                      [...Array(5)].map((_, i) => (
+                        <svg
+                          key={i}
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`h-5 w-5 ${
+                            i < TestimonialsData[currentIndex].clovers!
+                              ? "text-textColors-light"
+                              : "text-textColors-light/30"
+                          }`}
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 3.56L7.695 8.2 2.8 9.12l3.6 3.517-.85 4.963 4.45-2.337 4.45 2.337-.85-4.963 3.6-3.518-4.895-.918L10 3.56z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      ))}
+                  </div>
+                  <h3 className="text-lg font-semibold text-textColors-light">
+                    {TestimonialsData[currentIndex].title}
+                  </h3>
+                  <p className="text-textColors-light/80 italic">
+                    "{TestimonialsData[currentIndex].content}"
+                  </p>
+                  <div className="flex items-center gap-2 pt-2">
+                    <div className="w-8 h-8 rounded-full bg-app-secondary/20 flex items-center justify-center">
                       <svg
-                        key={i}
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-4 w-4 ${
-                          i < TestimonialsData[currentIndex].clovers!
-                            ? "text-[#AB7F6E]"
-                            : "text-[#AB7F6E]/30"
-                        }`}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                        className="h-4 w-4 text-app-secondary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
                       >
                         <path
-                          fillRule="evenodd"
-                          d="M10 3.56L7.695 8.2 2.8 9.12l3.6 3.517-.85 4.963 4.45-2.337 4.45 2.337-.85-4.963 3.6-3.518-4.895-.918L10 3.56z"
-                          clipRule="evenodd"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                         />
                       </svg>
-                    ))}
+                    </div>
+                    <div>
+                      <p className="text-textColors-light font-medium">
+                        {TestimonialsData[currentIndex].name}
+                      </p>
+                      <p className="text-textColors-light/60 text-sm">Happy Customer</p>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             </motion.div>
-          </AnimatePresence>
+
+            {/* Navigation Buttons */}
+            <div className="flex gap-4">
+              <button
+                onClick={handlePrev}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-app-secondary/20 text-textColors-light rounded-lg hover:bg-app-secondary/40 transition-colors"
+                aria-label="Previous testimonial"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+                Previous
+              </button>
+              <button
+                onClick={handleNext}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-app-secondary text-textColors-light rounded-lg hover:bg-app-secondary/80 transition-colors"
+                aria-label="Next testimonial"
+              >
+                Next
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
