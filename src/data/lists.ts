@@ -6,13 +6,13 @@ import AduboporBackground4 from "../assets/AduboporBackground2.3.png";
 export const NavBarItems = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
-  { label: "About us", href: "/#AboutUs" },
+  { label: "About us", href: "/about" },
   { label: "Contacts", href: "/#Contact" },
 ];
 
 export const FooterItems = [
-  { label: "About Us", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/#contact" },
   { label: "Privacy Policy", href: "#privacy" },
   { label: "Terms of Service", href: "#terms" },
 ];
