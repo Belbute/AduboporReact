@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 // Sample gallery data - you can move this to data/lists.ts later
 const galleryImages = [
@@ -7,58 +8,87 @@ const galleryImages = [
     id: 1,
     src: "https://images.unsplash.com/photo-1628352081506-83c43123ed6d?q=80&w=2670&auto=format&fit=crop",
     alt: "Verdant crop field with fertilizer application",
-    category: "fields",
+    category: "fertilizers",
   },
   {
     id: 2,
     src: "https://images.unsplash.com/photo-1622383563227-04401ab4e5b4?q=80&w=2574&auto=format&fit=crop",
     alt: "Close-up of fertilizer pellets",
-    category: "products",
+    category: "fertilizers",
   },
   {
     id: 3,
     src: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2670&auto=format&fit=crop",
-    alt: "Farm machinery applying fertilizer",
-    category: "equipment",
+    alt: "Garden tools for planting",
+    category: "garden-tools",
   },
   {
     id: 4,
     src: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2670&auto=format&fit=crop",
-    alt: "Worker handling agricultural products",
-    category: "people",
+    alt: "Animal feed products",
+    category: "animal-feed",
   },
   {
     id: 5,
     src: "https://images.unsplash.com/photo-1592982537447-53ac1f7284ca?q=80&w=2574&auto=format&fit=crop",
-    alt: "Sustainable farming practices",
-    category: "fields",
+    alt: "Sustainable pest control methods",
+    category: "pest-control",
   },
   {
     id: 6,
     src: "https://images.unsplash.com/photo-1599033065339-c3f8cc0caf3f?q=80&w=2574&auto=format&fit=crop",
-    alt: "Product packaging and display",
-    category: "products",
+    alt: "Variety of seeds for planting",
+    category: "seeds",
   },
   {
     id: 7,
     src: "https://images.unsplash.com/photo-1624806992066-5ffaee197463?q=80&w=2574&auto=format&fit=crop",
-    alt: "Specialized fertilizer application",
-    category: "equipment",
+    alt: "Garden tool collection",
+    category: "garden-tools",
   },
   {
     id: 8,
     src: "https://images.unsplash.com/photo-1620277489602-d935500dc5de?q=80&w=2574&auto=format&fit=crop",
-    alt: "Team meeting at production facility",
-    category: "people",
+    alt: "High-quality seeds collection",
+    category: "seeds",
+  },
+  {
+    id: 9,
+    src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2574&auto=format&fit=crop",
+    alt: "Organic pest control solutions",
+    category: "pest-control",
+  },
+  {
+    id: 10,
+    src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?q=80&w=2574&auto=format&fit=crop",
+    alt: "Premium animal feed products",
+    category: "animal-feed",
   },
 ];
 
-// Available filter categories
-const categories = ["all", "fields", "products", "equipment", "people"];
+// Available filter categories - matching ProductCategories component
+const categories = [
+  { id: "all", label: "All Products" },
+  { id: "garden-tools", label: "Garden Tools" },
+  { id: "animal-feed", label: "Animal Feed" },
+  { id: "fertilizers", label: "Fertilizers" },
+  { id: "pest-control", label: "Pest Control" },
+  { id: "seeds", label: "Seeds" },
+];
 
 const Gallery: React.FC = () => {
+  const location = useLocation();
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("all");
+
+  // Parse category from URL query parameter on initial load
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const category = params.get("category");
+    if (category && categories.some((cat) => cat.id === category)) {
+      setActiveCategory(category);
+    }
+  }, [location.search]);
 
   const filteredImages = galleryImages.filter(
     (image) => activeCategory === "all" || image.category === activeCategory
@@ -80,8 +110,8 @@ const Gallery: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-app-secondary rounded-full mx-auto"></div>
           <p className="text-lg text-textColors-light/90 max-w-2xl mx-auto">
-            Explore our collection of images showcasing our products, fields, equipment, and the
-            dedicated people behind our success.
+            Explore our collection of images showcasing our products, from garden tools to seeds and
+            animal feed.
           </p>
         </motion.div>
 
@@ -89,17 +119,17 @@ const Gallery: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
             <motion.button
-              key={category}
+              key={category.id}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory(category.id)}
               className={`px-6 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ${
-                activeCategory === category
+                activeCategory === category.id
                   ? "bg-app-secondary text-textColors-light"
                   : "bg-app-secondary/10 text-textColors-light hover:bg-app-secondary/20"
               }`}
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
+              {category.label}
             </motion.button>
           ))}
         </div>

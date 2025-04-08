@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface CategoryCardProps {
   category: { name: string };
@@ -14,6 +15,19 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   description,
   className,
 }) => {
+  // Helper to convert category name to URL-friendly format
+  const getCategoryParam = (categoryName: string): string => {
+    const categoryMap: { [key: string]: string } = {
+      "Garden Tools": "garden-tools",
+      "Animal Feed": "animal-feed",
+      Fertilizers: "fertilizers",
+      "Pest Control": "pest-control",
+      Seeds: "seeds",
+    };
+
+    return categoryMap[categoryName] || "all";
+  };
+
   return (
     <motion.div
       className={`relative h-60 lg:h-full bg-white shadow-md rounded-xl overflow-hidden group ${className}`}
@@ -38,13 +52,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
             {description}
           </p>
         )}
-        <motion.button
-          className="mt-3 px-4 py-2 bg-app-secondary/80 text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          View Products
-        </motion.button>
+        <Link to={`/gallery?category=${getCategoryParam(category.name)}`}>
+          <motion.button
+            className="mt-3 px-4 py-2 bg-app-secondary/80 text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View Products
+          </motion.button>
+        </Link>
       </div>
     </motion.div>
   );
