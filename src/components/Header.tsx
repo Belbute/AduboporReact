@@ -26,7 +26,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed z-40 top-0 left-0 right-0 p-4 bg-gradient-to-b from-black/60 to-transparent"
+      className="relative z-40 p-4 bg-gradient-to-b from-black/60 to-transparent"
     >
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}

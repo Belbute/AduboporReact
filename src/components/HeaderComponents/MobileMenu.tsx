@@ -11,12 +11,12 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
   return (
     <div
-      className={`fixed inset-0 bg-gray-900/95 z-20 transition-opacity duration-300 ease-in-out ${
-        isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+      className={`absolute top-full left-0 w-full bg-gray-900/95 z-20 transition-all duration-300 ease-in-out ${
+        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
       aria-hidden={!isOpen}
     >
-      <ul className="flex flex-col items-center justify-center h-full space-y-8">
+      <ul className="flex flex-col items-center justify-center py-12 space-y-8">
         {NavBarItems.map((link, index) => (
           <li key={index} className="text-textColors-light text-lg font-medium">
             {link.href.startsWith("/") ? (
