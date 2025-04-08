@@ -26,7 +26,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="relative z-40 p-4 bg-gradient-to-b from-black/60 to-transparent"
+      className="relative z-50 p-4 bg-gradient-to-b from-black/60 to-transparent"
     >
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
@@ -37,12 +37,29 @@ const Header = () => {
         </motion.div>
         {/* Hamburger menu for mobile */}
         <div className="lg:hidden text-textColors-light z-40">
-          <HamburgerMenu
-            opened={isMenuOpen}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={toggleMenu}
-            aria-label="Open Navigation Menu"
+            className="p-2 rounded-lg hover:bg-app-secondary/20 transition-colors"
+            aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
-          />
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              />
+            </svg>
+          </motion.button>
         </div>
         {/* Nav Links for larger screens */}
         <ul className="hidden lg:flex items-center space-x-8 text-textColors-light text-lg z-30">
