@@ -60,11 +60,13 @@ const Testimonials: React.FC = () => {
               transition={{ duration: 0.8, ease: "easeInOut" }}
             >
               <div className="relative h-full w-[70%] flex items-end justify-start">
-                <img
+                <motion.img
                   src={images[currentIndex % images.length]}
                   alt={TestimonialsData[currentIndex].name}
                   className="max-h-[500px] w-auto object-contain"
                   style={{ minHeight: "300px" }}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
                 />
               </div>
 
@@ -75,21 +77,32 @@ const Testimonials: React.FC = () => {
                 <p className="mt-4 font-semibold text-[#AB7F6E] text-lg">
                   — {TestimonialsData[currentIndex].name}
                 </p>
+                {TestimonialsData[currentIndex].clovers && (
+                  <div className="flex mt-2">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        xmlns="http://www.w3.org/2000/svg"
+                        className={`h-4 w-4 ${
+                          i < TestimonialsData[currentIndex].clovers!
+                            ? "text-[#AB7F6E]"
+                            : "text-[#AB7F6E]/30"
+                        }`}
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 3.56L7.695 8.2 2.8 9.12l3.6 3.517-.85 4.963 4.45-2.337 4.45 2.337-.85-4.963 3.6-3.518-4.895-.918L10 3.56z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2">
-            {TestimonialsData.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentIndex ? "bg-secondary" : "bg-[#91B1C4]/50"
-                }`}
-                aria-label={`View testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>
