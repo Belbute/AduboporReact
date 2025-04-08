@@ -51,35 +51,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
           {/* Background overlay with gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-black to-app-main/95 w-full h-full" />
 
-          {/* Close button */}
-          <motion.div
-            className="absolute top-4 right-4 md:top-6 md:right-6 z-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <button
-              onClick={closeMenu}
-              className="p-2 text-textColors-light hover:text-app-secondary transition-colors"
-              aria-label="Close menu"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </motion.div>
-
           {/* Content container */}
           <div className="relative z-10 w-full h-full flex items-center justify-center">
             <div className="w-full max-w-md px-4">
