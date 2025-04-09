@@ -40,9 +40,9 @@ const ProductCategories = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Text Side */}
+          {/* Text Column - Appears first on all screen sizes */}
           <motion.div
-            className="flex flex-col justify-center text-textColors-light"
+            className="flex flex-col justify-center text-textColors-light order-1"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
@@ -97,13 +97,13 @@ const ProductCategories = () => {
             </motion.a>
           </motion.div>
 
-          {/* Right Column - Categories Grid */}
+          {/* Categories Grid Column - Appears second on mobile */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative order-2 mt-12 lg:mt-0"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:grid-cols-3 lg:grid-rows-[100px_25px_100px_100px_100px_100px_100px_100px_50px] lg:gap-y-4 lg:gap-x-4 lg:grid-flow-col">
               {/* Col 1 - Top blank space */}

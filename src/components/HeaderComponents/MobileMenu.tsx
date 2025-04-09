@@ -1,7 +1,7 @@
 // MobileMenu.tsx
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NavBarItems } from "../../data/lists"; // Adjust the import path as necessary
 
 interface MobileMenuProps {
@@ -10,6 +10,28 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Simple function to handle navigation to sections
+  const handleSectionNavigation = (sectionId: string) => {
+    // First close the menu
+    closeMenu();
+
+    // If already on homepage, directly scroll to the section with a small delay to let menu close
+    if (location.pathname === "/") {
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Just enough delay for menu animation
+    } else {
+      // Then navigate to the homepage with the section hash
+      navigate(`/#${sectionId}`);
+    }
+  };
+
   // Simpler animation for reliability
   const menuVariants = {
     closed: {
@@ -57,7 +79,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
               <motion.ul className="flex flex-col items-center justify-center space-y-8">
                 {NavBarItems.map((link, index) => (
                   <motion.li key={index} variants={itemVariants} className="w-full text-center">
-                    {link.href.startsWith("/") ? (
+                    {link.href.startsWith("/") && !link.href.includes("#") ? (
                       <Link
                         to={link.href}
                         className="block w-full px-6 py-4 text-2xl font-medium text-textColors-light hover:text-app-secondary transition-colors"
@@ -66,13 +88,20 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
                         {link.label}
                       </Link>
                     ) : (
-                      <a
-                        href={link.href}
+                      <button
                         className="block w-full px-6 py-4 text-2xl font-medium text-textColors-light hover:text-app-secondary transition-colors"
-                        onClick={closeMenu}
+                        onClick={() => {
+                          if (link.href.startsWith("#") || link.href.startsWith("/#")) {
+                            const sectionId = link.href.split("#")[1];
+                            handleSectionNavigation(sectionId);
+                          } else {
+                            window.location.href = link.href;
+                            closeMenu();
+                          }
+                        }}
                       >
                         {link.label}
-                      </a>
+                      </button>
                     )}
                     <motion.div
                       className="h-px w-0 bg-app-secondary mx-auto"
@@ -82,6 +111,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeMenu }) => {
                     />
                   </motion.li>
                 ))}
+
+                {/* Contact button for mobile */}
+                <motion.li variants={itemVariants} className="w-full text-center">
+                  <button
+                    className="block w-full px-6 py-4 text-2xl font-medium text-app-secondary hover:text-app-secondary/80 transition-colors"
+                    onClick={() => handleSectionNavigation("contact")}
+                  >
+                    Contact Us
+                  </button>
+                  <motion.div
+                    className="h-px w-0 bg-app-secondary mx-auto"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "30%" }}
+                    transition={{ duration: 0.3, delay: 0.1 * NavBarItems.length }}
+                  />
+                </motion.li>
               </motion.ul>
 
               <motion.div

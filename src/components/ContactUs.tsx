@@ -111,11 +111,11 @@ const ContactUs: React.FC = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h2 className="text-5xl font-bold text-textColors-light leading-tight">
-                Les't talk
+                Contact
                 <br />
-                on something <span className="text-app-secondary">great</span>
+                <span className="text-app-secondary">Adubopor</span>
                 <br />
-                together
+                Today
               </h2>
             </div>
 
@@ -134,7 +134,7 @@ const ContactUs: React.FC = () => {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span>andreaDesign@gmail.com</span>
+                <span>info@adubopor.pt</span>
               </div>
               <div className="flex items-center space-x-4">
                 <svg
@@ -150,7 +150,7 @@ const ContactUs: React.FC = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>+34 123 456 789</span>
+                <span>282 415 900</span>
               </div>
               <div className="flex items-center space-x-4">
                 <svg
@@ -172,7 +172,7 @@ const ContactUs: React.FC = () => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>123 Street 487 House</span>
+                <span>Boavista, Antigos Celeiros da EPAC, 8500-300 Portimão</span>
               </div>
             </div>
           </div>

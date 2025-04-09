@@ -7,12 +7,12 @@ export const NavBarItems = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
   { label: "About us", href: "/about" },
-  { label: "Contacts", href: "/#Contact" },
+  { label: "Contacts", href: "#contact" },
 ];
 
 export const FooterItems = [
   { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "#contact" },
   { label: "Privacy Policy", href: "#privacy" },
   { label: "Terms of Service", href: "#terms" },
 ];

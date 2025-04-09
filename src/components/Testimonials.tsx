@@ -28,13 +28,44 @@ const Testimonials: React.FC = () => {
     <section className="bg-app-main py-24" id="testimonials">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Content Column - Will appear first on mobile, second on desktop */}
+          {/* Left Column - Image Side */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="space-y-8 order-1 lg:order-2"
+            className="relative h-[500px]"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                className="absolute inset-0 flex items-center"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              >
+                <div className="relative w-full h-full flex items-end justify-start">
+                  <motion.img
+                    src={images[currentIndex % images.length]}
+                    alt={TestimonialsData[currentIndex].name}
+                    className="max-h-[450px] w-auto object-contain"
+                    style={{ minHeight: "300px" }}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Right Column - Content Side */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-8"
           >
             {/* Section Heading */}
             <div className="space-y-6">
@@ -184,37 +215,6 @@ const Testimonials: React.FC = () => {
                 </svg>
               </button>
             </div>
-          </motion.div>
-
-          {/* Image Column - Will appear second on mobile, first on desktop */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="relative h-[500px] order-2 lg:order-1 mt-12 lg:mt-0"
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                className="absolute inset-0 flex items-center"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 30 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-              >
-                <div className="relative w-full h-full flex items-end justify-center lg:justify-start">
-                  <motion.img
-                    src={images[currentIndex % images.length]}
-                    alt={TestimonialsData[currentIndex].name}
-                    className="max-h-[450px] w-auto object-contain"
-                    style={{ minHeight: "300px" }}
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </div>
-              </motion.div>
-            </AnimatePresence>
           </motion.div>
         </div>
       </div>

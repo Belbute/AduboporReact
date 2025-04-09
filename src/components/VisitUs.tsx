@@ -27,7 +27,7 @@ const VisitUs: React.FC = () => {
         </svg>
       ),
       title: "Location",
-      content: "123 Garden Street, Algarve, Portugal",
+      content: "Boavista, Antigos Celeiros da EPAC, 8500-300 Portimão",
     },
     {
       icon: (
@@ -47,7 +47,8 @@ const VisitUs: React.FC = () => {
         </svg>
       ),
       title: "Opening Hours",
-      content: "Monday - Friday: 9AM - 6PM\nSaturday: 10AM - 4PM",
+      content: "Monday - Saturday: 8:00 - 19:00\nSunday: Closed\n",
+      note: "Also open on public holidays",
     },
   ];
 
@@ -55,37 +56,40 @@ const VisitUs: React.FC = () => {
     <section className="bg-app-main py-24" id="visit">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Map Side */}
+          {/* Map Column - Appears first on desktop, second on mobile */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
+            className="order-2 lg:order-1 mt-12 lg:mt-0"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-app-secondary/20 border-4 border-app-secondary/40 group">
               <iframe
                 title="Google Maps Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.039384586647!2d-8.5445373!3d37.147067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1b28f3b9c5d5b5%3A0x9c9e9c9e9c9e9c9e!2sAdubopor!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3177.636177408379!2d-8.54543712315674!3d37.14706687197432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1b3194f7e7e2d5%3A0xe189e67c6b9db60a!2sAdubopor%2C%20Lda.!5e0!3m2!1sen!2spt!4v1713302659275!5m2!1sen!2spt"
                 className="w-full h-[500px] border-0 scale-100 group-hover:scale-105 transition-transform duration-700"
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
               <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-app-main/90 to-app-main/10 opacity-40 pointer-events-none"></div>
               <div className="absolute bottom-4 left-4 right-4 bg-app-secondary/80 backdrop-blur-sm p-4 rounded-lg z-20 transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                 <p className="text-textColors-light text-center font-medium">
-                  123 Garden Street, Algarve, Portugal — Find us easily with Google Maps!
+                  Boavista, Antigos Celeiros da EPAC, 8500-300 Portimão — Find us easily with Google
+                  Maps!
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column - Content Side */}
+          {/* Content Column - Appears second on desktop, first on mobile */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-8 order-1 lg:order-2"
           >
             {/* Section Heading */}
             <div className="space-y-6">
@@ -116,6 +120,9 @@ const VisitUs: React.FC = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-textColors-light">{item.title}</h3>
                     <p className="text-textColors-light/80 whitespace-pre-line">{item.content}</p>
+                    {item.note && (
+                      <p className="text-sm text-textColors-light/60 mt-1 italic">{item.note}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -123,11 +130,13 @@ const VisitUs: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="https://maps.google.com"
+              <motion.a
+                href="https://maps.app.goo.gl/a6b1t1rLyYdkiEpWA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 bg-app-secondary text-textColors-light rounded-lg hover:bg-app-secondary/80 transition-colors"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +159,7 @@ const VisitUs: React.FC = () => {
                   />
                 </svg>
                 Get Directions
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         </div>

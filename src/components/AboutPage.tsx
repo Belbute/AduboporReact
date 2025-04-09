@@ -249,10 +249,12 @@ const AboutPage: React.FC = () => {
                   with any questions.
                 </p>
                 <motion.a
-                  href="#visit"
+                  href="https://maps.app.goo.gl/a6b1t1rLyYdkiEpWA"
                   className="inline-flex items-center justify-center w-full gap-2 px-6 py-3 bg-app-main/20 backdrop-blur-sm text-textColors-light rounded-lg hover:bg-app-main/30 transition-colors"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Get Directions
                   <svg

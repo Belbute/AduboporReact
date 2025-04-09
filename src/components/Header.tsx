@@ -1,7 +1,7 @@
 // Header.tsx
 import { useEffect, useContext } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MenuContext from "../MenuContext"; // Adjust the import path as necessary
 import LogoImage from "../assets/AduboporLogo.png";
 import Logo from "./HeaderComponents/Logo";
@@ -14,12 +14,33 @@ import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 const Header = () => {
   const { isMenuOpen, toggleMenu } = useContext(MenuContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Toggle the navigation menu and scroll behavior
   useEffect(() => {
     isMenuOpen ? disablePageScroll() : enablePageScroll();
     return () => enablePageScroll();
   }, [isMenuOpen]);
+
+  // Simple function to handle navigation to sections
+  const handleSectionNavigation = (sectionId: string) => {
+    // Close menu if open
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+
+    // If already on homepage, directly scroll to the section without navigation
+    if (location.pathname === "/") {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to the homepage with the section hash
+      navigate(`/#${sectionId}`);
+    }
+  };
 
   return (
     <motion.nav
@@ -70,7 +91,8 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              {link.href.startsWith("/") ? (
+              {link.href.startsWith("/") && !link.href.includes("#") ? (
+                // Regular page link (e.g., /about, /gallery)
                 <Link
                   to={link.href}
                   className="relative px-4 py-2 rounded-lg hover:bg-app-secondary/20 transition-colors duration-300"
@@ -85,10 +107,19 @@ const Header = () => {
                   />
                 </Link>
               ) : (
-                <a
-                  href={link.href}
+                // Hash link for section navigation (e.g., /#contact)
+                <button
                   className="relative px-4 py-2 rounded-lg hover:bg-app-secondary/20 transition-colors duration-300"
-                  onClick={() => isMenuOpen && toggleMenu()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (link.href.startsWith("#") || link.href.startsWith("/#")) {
+                      const sectionId = link.href.split("#")[1];
+                      handleSectionNavigation(sectionId);
+                    } else {
+                      // Handle potential external links if needed
+                      window.location.href = link.href;
+                    }
+                  }}
                 >
                   {link.label}
                   <motion.span
@@ -97,25 +128,24 @@ const Header = () => {
                     whileHover={{ scaleX: 1 }}
                     transition={{ duration: 0.3 }}
                   />
-                </a>
+                </button>
               )}
             </motion.li>
           ))}
         </ul>
-        {/* Auth buttons */}
+        {/* Visite-nos button */}
         <div className="hidden lg:flex items-center space-x-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
           >
-            <ExpandableButton
-              href="#visit"
+            <button
+              onClick={() => handleSectionNavigation("visit")}
               className="bg-app-secondary text-textColors-light px-6 py-2 rounded-lg hover:bg-app-secondary/80 transition-colors duration-300 shadow-lg"
-              ImgSrc={mapSVG}
             >
               Visite-nos
-            </ExpandableButton>
+            </button>
           </motion.div>
         </div>
       </div>
